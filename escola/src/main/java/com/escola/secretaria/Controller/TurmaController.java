@@ -1,4 +1,4 @@
-package com.escola.turma.Controller;
+package com.escola.secretaria.Controller;
 
 import java.util.List;
 
@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.escola.turma.model.Turma;
-import com.escola.turma.repository.TurmaRepository;
+import com.escola.secretaria.model.Turma;
+import com.escola.secretaria.repository.TurmaRepository;
 
 @RestController
 @RequestMapping("/turma")
