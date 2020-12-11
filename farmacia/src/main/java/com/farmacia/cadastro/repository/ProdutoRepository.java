@@ -11,6 +11,6 @@ import com.farmacia.cadastro.model.entities.Produto;
 public interface ProdutoRepository extends JpaRepository<Produto, Long>{
 
 	
-	public List<Produto> findAllByDescricaoContainingIgnoreCase(String produto);
+	public List<Produto> findAllByNomeContainingIgnoreCase(String nome);
 	
 }
