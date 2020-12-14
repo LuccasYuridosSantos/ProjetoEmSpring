@@ -11,4 +11,8 @@ import com.loja.eletro.model.entities.Produto;
 public interface ProdutoRepository extends JpaRepository<Produto, Long> {
 		
 	public List<Produto> findAllByNomeContainingIgnoreCase(String nome);
+	
+	public List<Produto> findByPrecoBetween(double precoIn, double precoFim);
+	
+	
 }

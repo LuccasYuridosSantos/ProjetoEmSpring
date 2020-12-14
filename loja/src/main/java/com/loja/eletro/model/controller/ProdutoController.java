@@ -42,6 +42,11 @@ public class ProdutoController {
 		return ResponseEntity.ok(repository.findAllByNomeContainingIgnoreCase(nome));
 	}
 	
+	@GetMapping("range/{valorIn}/{valorFim}")
+	public ResponseEntity<List<Produto>> getByRange(@PathVariable double valorIn,@PathVariable double valorFim){
+		return ResponseEntity.ok(repository.findByPrecoBetween(valorIn, valorFim));
+	}
+	
 	
 	@PostMapping
 	public ResponseEntity<Produto> postProduto(@RequestBody Produto produto){
