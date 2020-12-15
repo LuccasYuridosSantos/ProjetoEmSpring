@@ -48,6 +48,11 @@ public class ProdutoController {
 	}
 	
 	
+	@GetMapping("/porTipo/{tipoId}/{valor}")
+	public ResponseEntity<List<Produto>> getByIdAndPreco(@PathVariable long tipoId, @PathVariable double valor){
+		return ResponseEntity.ok(repository.findByTipoEletroIdAndPrecoLessThanEqual(tipoId, valor));
+	}
+	
 	@PostMapping
 	public ResponseEntity<Produto> postProduto(@RequestBody Produto produto){
 		return ResponseEntity.status(HttpStatus.CREATED).body(repository.save(produto));

@@ -14,5 +14,6 @@ public interface ProdutoRepository extends JpaRepository<Produto, Long> {
 	
 	public List<Produto> findByPrecoBetween(double precoIn, double precoFim);
 	
+	public List<Produto> findByTipoEletroIdAndPrecoLessThanEqual(long tipoEletroId,double preco);
 	
 }
