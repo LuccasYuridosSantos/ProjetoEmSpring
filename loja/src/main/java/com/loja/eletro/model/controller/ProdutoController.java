@@ -33,38 +33,36 @@ public class ProdutoController {
 
 	@GetMapping("/{id}")
 	public ResponseEntity<Produto> getByIdProduto(@PathVariable long id) {
-		return repository.findById(id).map(resp -> ResponseEntity.ok(resp)).orElse(ResponseEntity.badRequest().build());
+		return repository.findById(id).map(resp -> ResponseEntity.ok(resp)).orElse(ResponseEntity.notFound().build());
 	}
-	
-	
+
 	@GetMapping("/nome/{nome}")
-	public ResponseEntity<List<Produto>> getByAllNome(@PathVariable String nome){
+	public ResponseEntity<List<Produto>> getByAllNome(@PathVariable String nome) {
 		return ResponseEntity.ok(repository.findAllByNomeContainingIgnoreCase(nome));
 	}
-	
+
 	@GetMapping("range/{valorIn}/{valorFim}")
-	public ResponseEntity<List<Produto>> getByRange(@PathVariable double valorIn,@PathVariable double valorFim){
+	public ResponseEntity<List<Produto>> getByRange(@PathVariable double valorIn, @PathVariable double valorFim) {
 		return ResponseEntity.ok(repository.findByPrecoBetween(valorIn, valorFim));
 	}
-	
-	
+
 	@GetMapping("/porTipo/{tipoId}/{valor}")
-	public ResponseEntity<List<Produto>> getByIdAndPreco(@PathVariable long tipoId, @PathVariable double valor){
+	public ResponseEntity<List<Produto>> getByIdAndPreco(@PathVariable long tipoId, @PathVariable double valor) {
 		return ResponseEntity.ok(repository.findByTipoEletroIdAndPrecoLessThanEqual(tipoId, valor));
 	}
-	
+
 	@PostMapping
-	public ResponseEntity<Produto> postProduto(@RequestBody Produto produto){
+	public ResponseEntity<Produto> postProduto(@RequestBody Produto produto) {
 		return ResponseEntity.status(HttpStatus.CREATED).body(repository.save(produto));
 	}
-	
+
 	@PutMapping
-	public ResponseEntity<Produto> putProduto(@RequestBody Produto produto){
+	public ResponseEntity<Produto> putProduto(@RequestBody Produto produto) {
 		return ResponseEntity.status(HttpStatus.OK).body(repository.save(produto));
 	}
-	
+
 	@DeleteMapping("/{id}")
-	public void deleteTipoEletro(@PathVariable long id){
-			repository.deleteById(id);
+	public void deleteTipoEletro(@PathVariable long id) {
+		repository.deleteById(id);
 	}
 }
